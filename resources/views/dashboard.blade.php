@@ -13,7 +13,11 @@
   
                   <div class="card-body pb-0">
                     <h5 class="card-title">Hisob Kitoblar <span>Kunlik</span></h5>
-  
+                    <form action="{{ route('admin.dashboard') }}" method="GET" class="d-flex gap-2">
+                        <input type="date" name="from" value="{{ request('from') }}" class="form-control form-control-sm" />
+                        <input type="date" name="to" value="{{ request('to') }}" class="form-control form-control-sm" />
+                        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+                    </form>
                     <table class="table table-borderless">
                       <thead>
                         <tr>
@@ -62,6 +66,12 @@
                                 <b>Umumiy: {{ number_format($total) }}</b>
                             </td>  
                         </tr> 
+
+                        <tr>
+                          <td colspan="3">
+                              <b>Foyda: {{ number_format($benefit) }}</b>
+                          </td>  
+                      </tr> 
                       </tbody>
                     </table>
   
