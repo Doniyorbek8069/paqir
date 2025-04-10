@@ -13,7 +13,7 @@
                     <tr>
                         <th scope="col" class="align-middle">#</th>
                         <th scope="col" class="align-middle">Mahsulot Nomi</th>
-                        <th scope="col" class="align-middle">Soni</th>
+                        <th scope="col" class="align-middle" colspan="2">Soni</th>
                         <th scope="col" class="align-middle">Tan Narxi</th>
                         <th scope="col" class="align-middle">Narxi</th>
                     </tr>
