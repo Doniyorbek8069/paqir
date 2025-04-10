@@ -14,6 +14,7 @@
                         <th scope="col" class="align-middle">#</th>
                         <th scope="col" class="align-middle">Mahsulot Nomi</th>
                         <th scope="col" class="align-middle">Soni</th>
+                        <th scope="col" class="align-middle">Tan Narxi</th>
                         <th scope="col" class="align-middle">Narxi</th>
                     </tr>
                 </thead>
@@ -23,11 +24,14 @@
                             <td>{{ $loop->index+1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td colspan="2">  
-                                <input type="number" step="0.001" class="form-control float-right" placeholder="Dona" name="products[{{$loop->index}}][amount]" oninput="calculate()" >
+                                <input type="number" class="form-control float-right" placeholder="Dona" name="products[{{$loop->index}}][amount]" oninput="calculate()" >
                                 <input type="hidden" placeholder="Dona" name="products[{{$loop->index}}][id]" value="{{ $item->id }}">
                             </td>
                             <td>
-                                <input type="number" step="0.001" class="form-control float-center" placeholder="Narx" name="products[{{$loop->index}}][price]" value="{{ $item->price }}" oninput="calculate()">
+                                <input type="number" class="form-control" placeholder="tan narx" name="products[{{$loop->index}}][cost_price]" value="{{ $item->price }}" oninput="calculate()">
+                            </td>
+                            <td>
+                                <input type="number" class="form-control float-center" placeholder="Narx" name="products[{{$loop->index}}][price]" value="{{ $item->price }}" oninput="calculate()">
                             </td>
                         </tr>
                     @endforeach
