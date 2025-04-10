@@ -27,14 +27,18 @@ class OrderController extends Controller
         ]);
         $total = 0;
         foreach($request->products as $product){
-            OrderProduct::query()->create([
-                'order_id'      => $order->id,
-                'product_id'    => $product['id'],
-                'number'        => $product['amount'],
-                'price'         => $product['price'],
-                'cost_price'    => $product['cost_price']
-            ]);
-            $total = $total + $product['amount'] * $product['price'];
+            foreach($request->products as $product){
+                if(($product['amount'] > 0) && ($product['price'] > 0) && ($product['cost_price'] > 0)){
+                    OrderProduct::query()->create([
+                        'order_id'      => $order->id,
+                        'product_id'    => $product['id'],
+                        'number'        => $product['amount'],
+                        'price'         => $product['price'],
+                        'cost_price'    => $product['cost_price']
+                    ]);
+                    $total = $total + $product['amount'] * $product['price'];
+                }
+            }
         }
 
         Order::query()->where('id','=',$order->id)->update([
