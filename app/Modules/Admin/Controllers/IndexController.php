@@ -37,6 +37,4 @@ class IndexController extends Controller
 
         return $total;
     }
-
-
 }
