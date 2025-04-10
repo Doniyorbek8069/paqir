@@ -16,24 +16,27 @@ class IndexController extends Controller
         return view('dashboard',compact('data','benefit'));
     }
 
-    private function benefit($request){
+    private function benefit(Request $request)
+    {
         $from = $request->from;
         $to = $request->to;
 
         $query = OrderProduct::query()
-        ->join('orders','order_products.order_id','=','orders.id'); // Asosiy model (masalan, HisobKitob yoki shunga o‘xshash)
+            ->join('orders', 'order_products.order_id', '=', 'orders.id')
+            ->select('order_products.number', 'order_products.price', 'order_products.cost_price', 'orders.date');
 
         if ($from && $to) {
             $query->whereBetween('orders.date', [$from, $to]);
         }
 
         $data = $query->get();
-        $total = 0;
-        foreach($data as $item){
-            $total = $total + $item->number * ($item->price - $item->cost_price);
-        }
+
+        $total = $data->reduce(function ($carry, $item) {
+            return $carry + ((float)$item->number * ((float)$item->price - (float)$item->cost_price));
+        }, 0);
 
         return $total;
     }
+
 
 }
