@@ -28,7 +28,7 @@
                                 <input type="hidden" placeholder="Dona" name="products[{{$loop->index}}][id]" value="{{ $item->id }}">
                             </td>
                             <td>
-                                <input type="number" class="form-control" placeholder="tan narx" name="products[{{$loop->index}}][cost_price]" value="{{ $item->price }}" oninput="calculate()">
+                                <input type="number" class="form-control" placeholder="tan narx" name="products[{{$loop->index}}][cost_price]" oninput="calculate()">
                             </td>
                             <td>
                                 <input type="number" class="form-control float-center" placeholder="Narx" name="products[{{$loop->index}}][price]" value="{{ $item->price }}" oninput="calculate()">
