@@ -72,7 +72,7 @@ class OrderController extends Controller
         }
         self::sendmessage('CHiqim Qilindi',$total,$staff->balance + $total,$staff->tg_chat_id,$request->comment ?? NULL,$productstext);
 
-        return redirect()->back();
+        return redirect()->route('admin.dashboard');
     }
     
     private function sendmessage($event,$sum,$debt,$id,$comment,$products){
